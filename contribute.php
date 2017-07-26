@@ -159,6 +159,49 @@ Content-type: application/json
            Catalog will be.</p>
        </div>
      </article>
+     <article id="post-3" class="post-3 page type-page status-publish has-post-thumbnail hentry">
+       <a name="model_get"></a>
+       <div class="entry-title">Modules? Get Implementation Metadata</div>
+       <div class="entry-content">
+          <p>If you need to look for a specific module from all modules or you are looking for a modules that contain specific metadata, you can
+                 use the following steps:</p>
+          <ol>
+                     <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API
+                       account if you do not have one already.</li>
+                     <li>Once the account is requested, wait until confirmation before proceeding.</li>
+                     <li>Use an HTTP GET request to <a href="https://yangcatalog.org:8443/search/modules/{name},{revision}">
+                     https://yangcatalog.org:8443/search/modules/{name},{revision}</a> to receive all the metadata for a specific module
+                     </br>
+                     Use an HTTP GET request to <a href="https://yangcatalog.org:8443/search/{key}/{value}">
+                       https://yangcatalog.org:8443/search/{key}/{value}</a> to receive all the modules that contain a specific metadata.
+                       </br>For example: https://yangcatalog.org:8443/search/compilation-status/pass
+                       </br>There are just several data that could be received this way. For data that are inside of container we use '$' symbol for
+                       seperating container and leaf. Here are the example that can be used:</br>
+                       ietf$ietf-wg, maturity-level, document-name, author-email, compilation-status, conformance-type, module-type, organization,
+                        yang-version, name, revision.
+
+                     </li>
+          </ol>
+       </div>
+     </article>
+
+     <article id="post-3" class="post-3 page type-page status-publish has-post-thumbnail hentry">
+            <a name="model_delete"></a>
+            <div class="entry-title">Modules? Delete Implementation Metadata</div>
+            <div class="entry-content">
+               <p>If you need to delete a specific module from all the modules that you have access to, you can
+                      use the following steps:</p>
+               <ol>
+                          <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API
+                            account if you do not have one already.</li>
+                          <li>Once the account is requested, wait until confirmation before proceeding.</li>
+                          <li>Use an HTTP DELETE request to
+                          <a href="https://yangcatalog.org:8443/modules/module/{name},{revision}">
+                                                 https://yangcatalog.org:8443/modules/module/{name},{revision}</a>
+                          </li>
+               </ol>
+            </div>
+          </article>
 
      <article id="post-4" class="post-4 page type-page status-publish has-post-thumbnail hentry">
        <a name="vendor"></a>
