@@ -70,23 +70,21 @@
 			<main id="main" class="site-main" role="main">
 
         <div class="entry-title">Table of Contents</div>
-        <ul>
-          <li>What are you trying to do?
+          <p>What are you trying to do?</p>
             <ul style="list-style-type:circle">
               <li><a href="#model_creator">I am a vendor, and I want to provide my module metadata.</a></li>
               <li><a href="#vendor">I am a vendor, and I want to provide my implementation metadata.</a></li>
               <li><a href="#model_creator">I am a Standards Development Organization, and I want to provide my module metadata.</a></li>
+							<li><a href="#hack">Hack YANG Catalog</a></li>
             </ul>
           </li>
-          <li><a href="#hack">Hack YANG Catalog</a></li>
-        </ul>
         <hr/>
 
 <article id="post-3" class="post-3 page type-page status-publish has-post-thumbnail hentry">
   <a name="model_creator"></a>
   <div class="entry-title">Model Creator? Add Model Metadata</div>
   <div class="entry-content">
-    <p>If you are a Standard Development Organization (SDO), an open source project or an organization (e.g., a vendor that creates proprietary models),
+    <p>If you are a Standard Development Organization (SDO), an open source project, or an organization (e.g., a vendor that creates proprietary models),
       and you want to add your models and related metadata to the Catalog, do the following:</p>
 
     <ol>
@@ -148,7 +146,7 @@ Content-type: application/json
  }
 </pre>
            </li>
-           <li>Test the result by querying <a href="http://yangcatalog.org:8008/api/config/catalog?deep">http://yangcatalog.org:8008/api/config/catalog?deep</a>
+           <li>Test the result by querying <a href="http://yangcatalog.org:8008/api/operational/catalog?deep">http://yangcatalog.org:8008/api/operational/catalog?deep</a>
              using the credentials <b>oper / oper</b>.</li>
            <li>Contact <a href="mailto:info@yangcatalog.org">info@yangcatalog.org</a> if you run into problems.</li>
          </ol>
@@ -260,7 +258,7 @@ Content-type: application/json
      }
      </pre>
                 </li>
-                <li>Test the result by querying <a href="http://yangcatalog.org:8008/api/config/catalog?deep">http://yangcatalog.org:8008/api/config/catalog?deep</a>
+                <li>Test the result by querying <a href="http://yangcatalog.org:8008/api/operational/catalog?deep">http://yangcatalog.org:8008/api/operational/catalog?deep</a>
                   using the credentials <b>oper / oper</b>.</li>
                 <li>Contact <a href="mailto:info@yangcatalog.org">info@yangcatalog.org</a> if you run into problems.</li>
               </ol>
