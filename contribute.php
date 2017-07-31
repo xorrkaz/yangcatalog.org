@@ -74,11 +74,10 @@
             <ul style="list-style-type:circle">
               <li><a href="#model_creator">I am a vendor or Standars Development Organization, and I want to provide my module metadata.</a></li>
               <li><a href="#vendor">I am a vendor, and I want to provide my implementation metadata.</a></li>
-                                                        <li><a href="#model_get">I want to search for module metadata.</a></li>
-                                                        <li><a href="#model_delete">I am a vendor or Standards Development Organization, and I want to delete my module metadata.</a></li>
-                                                        <li><a href="#hack">Hack YANG Catalog.</a></li>
+              <li><a href="#model_get">I want to search for module metadata.</a></li>
+              <li><a href="#model_delete">I am a vendor or Standards Development Organization, and I want to delete my module metadata.</a></li>
+              <li><a href="#hack">Hack YANG Catalog.</a></li>
             </ul>
-          </li>
         <hr/>
 
 <article id="post-3" class="post-3 page type-page status-publish has-post-thumbnail hentry">
@@ -127,25 +126,25 @@ module: module-metadata
 PUT https://yangcatalog.org:8443/modules
 Content-type: application/json
 
-{
+  {
       "modules": {
-         "module":[
-       {
-         "name": "example-jukebox",
-         "revision": "2014-01-20",
-         "organization": "example",
-         "maturity-level": "bar",
-         "author-email": "foo@bar.com",
-         "module-classification": "network-element",
-         "source-file": {
+         "module": [
+         {
+           "name": "example-jukebox",
+           "revision": "2014-01-20",
+           "organization": "example",
+           "maturity-level": "bar",
+           "author-email": "foo@bar.com",
+           "module-classification": "network-element",
+           "source-file": {
              "repository": "foo",
              "owner": "bar",
              "path": "standard/ietf/DRAFT/example-jukebox.yang"
+           }
          }
-       }
-     ]
-   }
- }
+       ]
+     }
+  }
 </pre>
            </li>
            <li>After submitting the request, if you are authorized, you will receive a job ID in the JSON-formatted reply.  For example:<br/>
@@ -229,7 +228,7 @@ Content-type: application/json
                  "path": "vendor/example/baz/baz-netconf-capability.xml"
              },
               "platform-ids": [
-                          "BAZ4000", "BAZ4100"
+                "BAZ4000", "BAZ4100"
               ],
               "software-flavor": "ALL",
               "software-version": "1.2.3",
@@ -261,7 +260,7 @@ Content-type: application/json
                                         <br/>To find all modules from the netconf working group in the IETF: <a href="https://yangcatalog.org:8443/search/ietf/ietf-wg/netconf">
 																					https://yangcatalog.org:8443/search/ietf/ietf-wg/netconf</a>
                                         <br/>This method will work for any node within the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">
-                                          yang-catalog</a>:</br>
+                                          yang-catalog</a>:<br/>
                  <pre>
  module: yang-catalog
      +--rw catalog
@@ -358,7 +357,7 @@ Content-type: application/json
                              </div>
                            </article>
 
-<article id="post-5" class="post-5 page type-page status-publish has-post-thumbnail hentry">
+<article id="post-7" class="post-7 page type-page status-publish has-post-thumbnail hentry">
   <a name="hack"></a>
   <div class="entry-title">Hacking Yangcatalog.org</div>
         <div class="entry-content">
