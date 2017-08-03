@@ -84,9 +84,14 @@
 						<h2>APIs</h2>
 						<p>For access to the REST interface using curl, try the following to receive the content of the organizations subtree from the
 							<a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog.yang</a> module. Note, the currently supported revision yang-catalog.yang is <b>2017-07-14</b>:</p>
-						<pre>$ curl -u oper:oper http://yangcatalog.org:8008/api/operational/catalog?deep</pre>
-						<p>And to get the same data but in JSON-format, use the following:</p>
-						<pre>$ curl -H "Accept: application/vnd.yang.data+json" -u oper:oper http://yangcatalog.org:8008/api/operational/catalog?deep</pre>
+						<pre>$ curl https://yangcatalog.org:8443/search/catalog</pre>
+						<p>This will return JSON-formatted data.  <b>NOTE:</b> the catalog is quite large and growing all the time.  Returning the whole Catalog will
+							pulling down quite a bit of data.  Alternaitvely, you can use the following to pull the module metadata:</p>
+						<pre>$ curl https://yangcatalog.org:8443/search/modules</pre>
+						<p>And use the following to get vendor implementation metadata:</p>
+						<pre>$ curl https://yangcatalog.org:8443/search/vendors</pre>
+						<p>These API endpoints may still produce large result sets.  To get more granular results, use the module or keyword <a href="/contribute.php#model_get">
+							search interface</a>.</p>
 					</div>
 					<!-- .entry-content -->
 				</article>

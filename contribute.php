@@ -272,7 +272,7 @@ Content-type: application/json
                 <p>If you want to search for metadata on a specific module, or you are looking for modules that contain specific metadata, you can do the following:</p>
                 <ol>
                   <li>Use an HTTP GET request to
-                    <b>https://yangcatalog.org:8443/search/modules/{name},{revision}</b> to receive all the metadata for a specific module and revision.</li>
+                    <b>https://yangcatalog.org:8443/search/modules/{name},{revision},{organization}</b> to receive all the metadata for a specific module and revision.</li>
                   <li>Use an HTTP GET request to
                     <b>https://yangcatalog.org:8443/search/{key}/{value}</b> to receive all the modules that contain a specific metadata.
                     <br/>For example, to find all modules with a successful compilation status: <a href="https://yangcatalog.org:8443/search/compilation-status/pass">
@@ -400,7 +400,7 @@ Content-type: application/json
                   <a href="https://help.github.com/articles/about-pull-requests/">pull request</a> to have your code merged.</p>
 
                 <p>To get updates about changes with YANG Catalog, <a href="https://www.marcuscom.com/mailman/listinfo/yangcatalog-announce">subscribe
-</a> to <a href="mailto:announce@yangcatalog.org">announce@yangcatalog.org</a>.</p>
+</a> to <b>announce@yangcatalog.org</b>.</p>
               </div>
               <!-- .entry-content -->
 
