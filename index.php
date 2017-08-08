@@ -140,9 +140,9 @@
 
 
 							<header class="entry-header">
-								<h1 class="entry-title"><a href="/blog.php" rel="bookmark">YANG Catalog Latest Development (IETF 98&nbsp;Hackathon)</a></h1></header>
+								<h1 class="entry-title"><a href="/blog.php" rel="bookmark">YANG Catalog Latest Development (IETF 98 and 99&nbsp;Hackathon)</a></h1></header>
 							<div class="entry-summary">
-								<p>The IETF 98 is now over. This was a successful IETF meeting in multiple ways, one of which is the IETF hackathon, two days of hacking on Saturday/Sunday....</p>
+								<p>The IETF 99 is now over. This was a successful IETF meeting in multiple ways, one of which is the IETF hackathon, two days of hacking on Saturday/Sunday....</p>
 								<p><a class="more-link" href="/blog.php" rel="bookmark">
 			Read more <span class="screen-reader-text">YANG Catalog Latest Development (IETF 98&nbsp;Hackathon)</span>		</a></p>
 							</div>
