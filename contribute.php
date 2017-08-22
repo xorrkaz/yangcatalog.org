@@ -282,79 +282,80 @@ Content-type: application/json
                     <br/>This method will work for any node within the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">
                                           yang-catalog</a>:<br/>
                     <pre>
- module: yang-catalog
-     +--rw catalog
-        +--rw modules
-        |  +--rw module* [name revision organization]
-        |     +--rw name                     yang:yang-identifier
-        |     +--rw revision                 union
-        |     +--rw schema?                  inet:uri
-        |     +--rw generated-from?          enumeration
-        |     +--rw maturity-level?          enumeration
-        |     +--rw document-name?           string
-        |     +--rw author-email?            yc:email-address
-        |     +--rw reference?               inet:uri
-        |     +--rw module-classification    enumeration
-        |     +--rw compilation-status?      enumeration
-        |     +--rw compilation-result?      string
-        |     +--rw prefix?                  string
-        |     +--rw yang-version?            enumeration
-        |     +--rw description?             string
-        |     +--rw contact?                 string
-        |     +--rw module-type?             enumeration
-        |     +--rw tree-type?               enumeration
-        |     +--rw organization             string
-        |     +--rw ietf
-        |     |  +--rw ietf-wg?   string
-        |     +--rw namespace                inet:uri
-        |     +--rw submodule* [name revision]
-        |     |  +--rw name        yang:yang-identifier
-        |     |  +--rw revision    union
-        |     |  +--rw schema?     inet:uri
-        |     +--rw implementations
-        |        +--rw implementation* [vendor platform software-version software-flavor]
-        |           +--rw vendor              string
-        |           +--rw platform            string
-        |           +--rw software-version    string
-        |           +--rw software-flavor     string
-        |           +--rw os-version?         string
-        |           +--rw feature-set?        string
-        |           +--rw os-type?            string
-        |           +--rw feature*            yang:yang-identifier
-        |           +--rw deviation* [name revision]
-        |           |  +--rw name        yang:yang-identifier
-        |           |  +--rw revision    union
-        |           +--rw conformance-type?   enumeration
-        +--rw vendors
-           +--rw vendor* [name]
-              +--rw name         string
-              +--rw platforms
-                 +--rw platform* [name]
-                    +--rw name                 string
-                    +--rw software-versions
-                       +--rw software-version* [name]
-                          +--rw name                string
-                          +--rw software-flavors
-                             +--rw software-flavor* [name]
-                                +--rw name         string
-                                +--rw protocols
-                                |  +--rw protocol* [name]
-                                |     +--rw name                identityref
-                                |     +--rw protocol-version?   string
-                                |     +--rw capabilities*       string
-                                +--rw modules
-                                   +--rw module* [name revision organization]
-                                      +--rw name                -> /catalog/modules/module/name
-                                      +--rw revision            -> /catalog/modules/module/revision
-                                      +--rw organization        -> /catalog/modules/module/organization
-                                      +--rw os-version?         string
-                                      +--rw feature-set?        string
-                                      +--rw os-type?            string
-                                      +--rw feature*            yang:yang-identifier
-                                      +--rw deviation* [name revision]
-                                      |  +--rw name        yang:yang-identifier
-                                      |  +--rw revision    union
-                                      +--rw conformance-type?   enumeration
+module: yang-catalog
+   +--rw catalog
+      +--rw modules
+      |  +--rw module* [name revision organization]
+      |     +--rw name                     yang:yang-identifier
+      |     +--rw revision                 union
+      |     +--rw organization             string
+      |     +--rw ietf
+      |     |  +--rw ietf-wg?   string
+      |     +--rw namespace                inet:uri
+      |     +--rw schema?                  inet:uri
+      |     +--rw generated-from?          enumeration
+      |     +--rw maturity-level?          enumeration
+      |     +--rw document-name?           string
+      |     +--rw author-email?            yc:email-address
+      |     +--rw reference?               inet:uri
+      |     +--rw module-classification    enumeration
+      |     +--rw compilation-status?      enumeration
+      |     +--rw compilation-result?      string
+      |     +--rw prefix?                  string
+      |     +--rw yang-version?            enumeration
+      |     +--rw description?             string
+      |     +--rw contact?                 string
+      |     +--rw module-type?             enumeration
+      |     +--rw belongs-to?              yang:yang-identifier
+      |     +--rw tree-type?               enumeration
+      |     +--rw submodule* [name revision]
+      |     |  +--rw name        yang:yang-identifier
+      |     |  +--rw revision    union
+      |     |  +--rw schema?     inet:uri
+      |     +--rw implementations
+      |        +--rw implementation* [vendor platform software-version software-flavor]
+      |           +--rw vendor              string
+      |           +--rw platform            string
+      |           +--rw software-version    string
+      |           +--rw software-flavor     string
+      |           +--rw os-version?         string
+      |           +--rw feature-set?        string
+      |           +--rw os-type?            string
+      |           +--rw feature*            yang:yang-identifier
+      |           +--rw deviation* [name revision]
+      |           |  +--rw name        yang:yang-identifier
+      |           |  +--rw revision    union
+      |           +--rw conformance-type?   enumeration
+      +--rw vendors
+         +--rw vendor* [name]
+            +--rw name         string
+            +--rw platforms
+               +--rw platform* [name]
+                  +--rw name                 string
+                  +--rw software-versions
+                     +--rw software-version* [name]
+                        +--rw name                string
+                        +--rw software-flavors
+                           +--rw software-flavor* [name]
+                              +--rw name         string
+                              +--rw protocols
+                              |  +--rw protocol* [name]
+                              |     +--rw name                identityref
+                              |     +--rw protocol-version?   string
+                              |     +--rw capabilities*       string
+                              +--rw modules
+                                 +--rw module* [name revision organization]
+                                    +--rw name                -> /catalog/modules/module/name
+                                    +--rw revision            -> /catalog/modules/module/revision
+                                    +--rw organization        -> /catalog/modules/module/organization
+                                    +--rw os-version?         string
+                                    +--rw feature-set?        string
+                                    +--rw os-type?            string
+                                    +--rw feature*            yang:yang-identifier
+                                    +--rw deviation* [name revision]
+                                    |  +--rw name        yang:yang-identifier
+                                    |  +--rw revision    union
+                                    +--rw conformance-type?   enumeration
                  </pre>
                   </li>
                 </ol>
