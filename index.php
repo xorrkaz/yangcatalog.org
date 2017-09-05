@@ -78,6 +78,7 @@
 							<li>A <a href="http://www.yangvalidator.org/">YANG Validator</a>, a web frontend that allows for validation of YANG modules and IETF drafts.</li>
 							<li>A <a href="https://www.yangcatalog.org/yang-search">YANG Search</a>, a web frontend that allows for searches over the content of the module catalog.</li>
 							<li>A <a href="https://www.yangcatalog.org/yang-search/impact_analysis.php">YANG impact analysis</a> tool.</li>
+							<li>View a module's <a href="https://www.yangcatalog.org/yang-search/module_details.php">metadata details</a>.</li>
 							<li>A <a href="http://yangcatalog.org:8088/">YANG Explorer</a> that includes a YANG browser and RPC-builder application to experiment with YANG modules</li>
 							<li>A <a href="https://yangcatalog.org/yangre">YANG Regex Validator</a>, a YANG regular expression validator to experiment with W3C YANG "pattern" statements</li>
 						</ul>
