@@ -101,7 +101,9 @@
               <a name="model_creator"></a>
               <div class="entry-title">Add Model Metadata</div>
               <div class="entry-content">
-                <p>If you are a Standard Development Organization (SDO), an open source project, or an organization (e.g., a vendor that creates proprietary models), and you want to add your models and related metadata to the Catalog, do the following:</p>
+                <p>If you are a Standard Development Organization (SDO), an open source project, or an organization such as a vendor that creates proprietary models,
+                   and you want to add your models' metadata to the Catalog, do the following.  <b>NOTE:</b> the Catalog is not a clearing house for model
+                 downloads.  While it provides metadata about models, it only provides links to external sites from which the models themselves can be download.</p>
 
                 <ol>
                   <li>Check your modules into <a href="https://github.com">GitHub</a>. Ideally submit your modules directly to the <a href="https://github.com/YangModels/yang">
