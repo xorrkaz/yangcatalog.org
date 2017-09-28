@@ -147,7 +147,7 @@ Content-type: application/json
            "name": "example-jukebox",
            "revision": "2014-01-20",
            "organization": "example",
-           "maturity-level": "bar",
+           "maturity-level": "ratified",
            "author-email": "foo@bar.com",
            "module-classification": "network-element",
            "source-file": {
