@@ -113,7 +113,7 @@
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
                   <li>Use an HTTP PUT request to <a href="https://yangcatalog.org:8443/modules">https://yangcatalog.org:8443/modules</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/module-metadata.yang">
-          model-metadata.yang</a> model (current revision: <b>2017-09-26</b>). Note, this module requires the
+          model-metadata.yang</a> model (current revision: <b>2017-07-27</b>). Note, this module requires the
                     <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog</a> module. The module-metadata.yang has the following tree structure:<br/>
                     <pre>
 module: module-metadata
