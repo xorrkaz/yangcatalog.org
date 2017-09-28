@@ -113,7 +113,7 @@
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
                   <li>Use an HTTP PUT request to <a href="https://yangcatalog.org:8443/modules">https://yangcatalog.org:8443/modules</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/module-metadata.yang">
-          model-metadata.yang</a> model (current revision: <b>2017-07-27</b>). Note, this module requires the
+          model-metadata.yang</a> model (current revision: <b>2017-09-26</b>). Note, this module requires the
                     <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog</a> module. The module-metadata.yang has the following tree structure:<br/>
                     <pre>
 module: module-metadata
@@ -169,11 +169,12 @@ Content-type: application/json
   }
 </pre>
                     <li>Perform an HTTP GET request to <b>https://yangcatalog.org:8443/job/{job_id}</b> to get the status of the job. The job result will remain "In progress" until the job completes. When the job has completed you will receive either a "Finished"
-                      (on success) or "Failed" (on failure) result. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org:8443/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
+                      (on success) or "Failed" (on failure) result. Reason will remain null if the result is other then "Failed, otherwise it will give a information on why it failed. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org:8443/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
                       <pre>
   {
     "info": {
       "job-id": "88bd8c4c-8809-4de8-85c8-39d522d4bcdf",
+      "reason": null,
       "result": "In progress"
     }
   }
@@ -198,50 +199,54 @@ Content-type: application/json
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
                   <li>Use an HTTP PUT request to <a href="https://yangcatalog.org:8443/platforms">https://yangcatalog.org:8443/platforms</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/platform-implementation-metadata.yang">
-               platform-implementation-metadata.yang</a> model (current revision: <b>2017-07-27</b>). Note, his module requires the
+               platform-implementation-metadata.yang</a> model (current revision: <b>2017-09-27</b>). Note, his module requires the
                     <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog</a> module. The platform-implementation-metadata module has the following tree structure:<br/>
                     <pre>
  module: platform-implementation-metadata
-     +--rw platforms* [vendor name software-version software-flavor]
-        +--rw vendor              string
-        +--rw name                string
-        +--rw product-ids*        string
-        +--rw software-version    string
-        +--rw software-flavor     string
-        +--rw os-version?         string
-        +--rw feature-set?        string
-        +--rw os-type?            string
-        +--rw module-list-file
-           +--rw type?         enumeration
-           +--rw owner         string
-           +--rw repository    string
-           +--rw path          path
-           +--rw branch?       string
+     +--rw platforms
+        +--rw platform* [vendor name software-version software-flavor]
+           +--rw vendor                  string
+           +--rw name                    string
+           +--rw netconf-capabilities*   string
+           +--rw product-ids*            string
+           +--rw software-version        string
+           +--rw software-flavor         string
+           +--rw os-version?             string
+           +--rw feature-set?            string
+           +--rw os-type?                string
+           +--rw module-list-file
+              +--rw type?         enumeration
+              +--rw owner         string
+              +--rw repository    string
+              +--rw path          yc:path
+              +--rw branch?       string
      </pre> For example:<br/>
                     <pre>
      PUT https://yangcatalog.org:8443/platforms
      Content-type: application/json
 
      {
-       "platforms": [
-            {
-              "vendor": "example",
-              "name": "baz",
-              "module-list-file": {
-                 "type": "capabilities",
-                 "repository": "foo",
-                 "owner": "bar",
-                 "path": "vendor/example/baz/baz-netconf-capability.xml"
-              },
-              "platform-ids": [
-                "BAZ4000", "BAZ4100"
-              ],
-              "software-flavor": "ALL",
-              "software-version": "1.2.3",
-              "os-type": "bazOS"
-            }
-          ]
-     }
+       "platforms" {
+           "platform": [
+               {
+                  "vendor": "example",
+                  "name": "baz",
+                  "module-list-file": {
+                     "type": "capabilities",
+                     "repository": "foo",
+                     "owner": "bar",
+                     "path": "vendor/example/baz/baz-netconf-capability.xml"
+                  },
+                  "platform-ids": [
+                     "BAZ4000", "BAZ4100"
+                  ],
+                  "software-flavor": "ALL",
+                  "software-version": "1.2.3",
+                  "os-type": "bazOS"
+                }
+           ]
+       }
+    }
      </pre>
                   </li>
                   <li>After submitting the request, if you are authorized, you will receive a job ID in the JSON-formatted reply. For example:<br/>
@@ -257,6 +262,7 @@ Content-type: application/json
 {
   "info": {
     "job-id": "88bd8c4c-8809-4de8-85c8-39d522d4bcdf",
+    "reason": null,
     "result": "In progress"
   }
 }
@@ -285,79 +291,87 @@ Content-type: application/json
                                           yang-catalog</a>:<br/>
                     <pre>
 module: yang-catalog
-   +--rw catalog
-      +--rw modules
-      |  +--rw module* [name revision organization]
-      |     +--rw name                     yang:yang-identifier
-      |     +--rw revision                 union
-      |     +--rw organization             string
-      |     +--rw ietf
-      |     |  +--rw ietf-wg?   string
-      |     +--rw namespace                inet:uri
-      |     +--rw schema?                  inet:uri
-      |     +--rw generated-from?          enumeration
-      |     +--rw maturity-level?          enumeration
-      |     +--rw document-name?           string
-      |     +--rw author-email?            yc:email-address
-      |     +--rw reference?               inet:uri
-      |     +--rw module-classification    enumeration
-      |     +--rw compilation-status?      enumeration
-      |     +--rw compilation-result?      string
-      |     +--rw prefix?                  string
-      |     +--rw yang-version?            enumeration
-      |     +--rw description?             string
-      |     +--rw contact?                 string
-      |     +--rw module-type?             enumeration
-      |     +--rw belongs-to?              yang:yang-identifier
-      |     +--rw tree-type?               enumeration
-      |     +--rw submodule* [name revision]
-      |     |  +--rw name        yang:yang-identifier
-      |     |  +--rw revision    union
-      |     |  +--rw schema?     inet:uri
-      |     +--rw implementations
-      |        +--rw implementation* [vendor platform software-version software-flavor]
-      |           +--rw vendor              string
-      |           +--rw platform            string
-      |           +--rw software-version    string
-      |           +--rw software-flavor     string
-      |           +--rw os-version?         string
-      |           +--rw feature-set?        string
-      |           +--rw os-type?            string
-      |           +--rw feature*            yang:yang-identifier
-      |           +--rw deviation* [name revision]
-      |           |  +--rw name        yang:yang-identifier
-      |           |  +--rw revision    union
-      |           +--rw conformance-type?   enumeration
-      +--rw vendors
-         +--rw vendor* [name]
-            +--rw name         string
-            +--rw platforms
-               +--rw platform* [name]
-                  +--rw name                 string
-                  +--rw software-versions
-                     +--rw software-version* [name]
-                        +--rw name                string
-                        +--rw software-flavors
-                           +--rw software-flavor* [name]
-                              +--rw name         string
-                              +--rw protocols
-                              |  +--rw protocol* [name]
-                              |     +--rw name                identityref
-                              |     +--rw protocol-version?   string
-                              |     +--rw capabilities*       string
-                              +--rw modules
-                                 +--rw module* [name revision organization]
-                                    +--rw name                -> /catalog/modules/module/name
-                                    +--rw revision            -> /catalog/modules/module/revision
-                                    +--rw organization        -> /catalog/modules/module/organization
-                                    +--rw os-version?         string
-                                    +--rw feature-set?        string
-                                    +--rw os-type?            string
-                                    +--rw feature*            yang:yang-identifier
-                                    +--rw deviation* [name revision]
-                                    |  +--rw name        yang:yang-identifier
-                                    |  +--rw revision    union
-                                    +--rw conformance-type?   enumeration
+    +--rw catalog
+       +--rw modules
+       |  +--rw module* [name revision organization]
+       |     +--rw name                     yang:yang-identifier
+       |     +--rw revision                 union
+       |     +--rw organization             string
+       |     +--rw ietf
+       |     |  +--rw ietf-wg?   string
+       |     +--rw namespace                inet:uri
+       |     +--rw schema?                  inet:uri
+       |     +--rw generated-from?          enumeration
+       |     +--rw maturity-level?          enumeration
+       |     +--rw document-name?           string
+       |     +--rw author-email?            yc:email-address
+       |     +--rw reference?               inet:uri
+       |     +--rw module-classification    enumeration
+       |     +--rw compilation-status?      enumeration
+       |     +--rw compilation-result?      inet:uri
+       |     +--rw prefix?                  string
+       |     +--rw yang-version?            enumeration
+       |     +--rw description?             string
+       |     +--rw contact?                 string
+       |     +--rw module-type?             enumeration
+       |     +--rw belongs-to?              yang:yang-identifier
+       |     +--rw tree-type?               enumeration
+       |     +--rw submodule* [name revision]
+       |     |  +--rw name        yang:yang-identifier
+       |     |  +--rw revision    union
+       |     |  +--rw schema?     inet:uri
+       |     +--rw dependencies* [name]
+       |     |  +--rw name        yang:yang-identifier
+       |     |  +--rw revision?   union
+       |     |  +--rw schema?     inet:uri
+       |     +--rw dependents* [name]
+       |     |  +--rw name        yang:yang-identifier
+       |     |  +--rw revision?   union
+       |     |  +--rw schema?     inet:uri
+       |     +--rw implementations
+       |        +--rw implementation* [vendor platform software-version software-flavor]
+       |           +--rw vendor              string
+       |           +--rw platform            string
+       |           +--rw software-version    string
+       |           +--rw software-flavor     string
+       |           +--rw os-version?         string
+       |           +--rw feature-set?        string
+       |           +--rw os-type?            string
+       |           +--rw feature*            yang:yang-identifier
+       |           +--rw deviation* [name revision]
+       |           |  +--rw name        yang:yang-identifier
+       |           |  +--rw revision    union
+       |           +--rw conformance-type?   enumeration
+       +--rw vendors
+          +--rw vendor* [name]
+             +--rw name         string
+             +--rw platforms
+                +--rw platform* [name]
+                   +--rw name                 string
+                   +--rw software-versions
+                      +--rw software-version* [name]
+                         +--rw name                string
+                         +--rw software-flavors
+                            +--rw software-flavor* [name]
+                               +--rw name         string
+                               +--rw protocols
+                               |  +--rw protocol* [name]
+                               |     +--rw name                identityref
+                               |     +--rw protocol-version*   string
+                               |     +--rw capabilities*       string
+                               +--rw modules
+                                  +--rw module* [name revision organization]
+                                     +--rw name                -> /catalog/modules/module/name
+                                     +--rw revision            -> /catalog/modules/module/revision
+                                     +--rw organization        -> /catalog/modules/module/organization
+                                     +--rw os-version?         string
+                                     +--rw feature-set?        string
+                                     +--rw os-type?            string
+                                     +--rw feature*            yang:yang-identifier
+                                     +--rw deviation* [name revision]
+                                     |  +--rw name        yang:yang-identifier
+                                     |  +--rw revision    union
+                                     +--rw conformance-type?   enumeration
                  </pre>
                   </li>
                 </ol>
@@ -372,8 +386,12 @@ module: yang-catalog
                 <ol>
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
-                  <li>Use an HTTP DELETE request to
-                    <b>https://yangcatalog.org:8443/modules/module/{name},{revision}</b>
+                  <li>Use an HTTP DELETE request to delete specific module
+                    <b>https://yangcatalog.org:8443/modules/module/{name},{revision},{organization}</b>
+                  </li>
+                  <li>Use an HTTP DELETE request to delete modules on specific implementation metadata
+                    <b>https://yangcatalog.org:8443/vendors/vendor/{name}</b>.
+                     You can continue deeper on the vendors branch up to software-flavor
                   </li>
                 </ol>
                 <p><b>NOTE:</b> Deleting implementation metadata is currently not possible.</p>
