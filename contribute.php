@@ -328,6 +328,8 @@ module: yang-catalog
        |     |  +--rw name        yang:yang-identifier
        |     |  +--rw revision?   union
        |     |  +--rw schema?     inet:uri
+       |     +--rw semantic-version?           yc:semver
+       |     +--rw derived-semantic-version?   yc:semver
        |     +--rw implementations
        |        +--rw implementation* [vendor platform software-version software-flavor]
        |           +--rw vendor              string
