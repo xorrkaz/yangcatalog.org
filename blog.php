@@ -100,11 +100,14 @@
 
 
 							<div class="entry-content">
+                                                                <p><a href="http://www.claise.be/2017/11/yang-catalog-latest-development-ietf-100-hackathon/" rel="nofollow">http://www.claise.be/2017/11/yang-catalog-latest-development-ietf-100-hackathon/</a></p>
+                                                        </div>
+							<div class="entry-content">
+                                                               	<p><a href="http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/" rel="nofollow">http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/</a></p>
+                                                         </div>
+							<div class="entry-content">
 								<p><a href="http://www.claise.be/2017/04/yang-catalog-latest-development-ietf-98-hackathon/" rel="nofollow">http://www.claise.be/2017/04/yang-catalog-latest-development-ietf-98-hackathon/</a></p>
 							</div>
-							<div class="entry-content">
-                            	<p><a href="http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/" rel="nofollow">http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/</a></p>
-                            </div>
 							<!-- .entry-content -->
 
 						</article>
