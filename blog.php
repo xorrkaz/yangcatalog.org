@@ -84,7 +84,7 @@
 
 						<article id="post-6" class="post-6 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
 							<header class="entry-header">
-								<h2 class="entry-title"><a href="/blog.php" rel="bookmark">YANG Catalog Latest Development (IETF 98&nbsp;Hackathon)</a></h2>
+								<h2 class="entry-title"><a href="/blog.php" rel="bookmark">YANG Catalog Latest Development (IETF 100&nbsp;Hackathon)</a></h2>
 								<div class="entry-meta">
 									<span class="posted-on">Posted on <a href="/blog.php" rel="bookmark"><time class="entry-date published" datetime="2017-04-16T08:34:30+00:00">April 16, 2017</time><time class="updated" datetime="2017-04-16T12:24:47+00:00">April 16, 2017</time></a></span>
 									<span
@@ -100,13 +100,13 @@
 
 
 							<div class="entry-content">
-                                                                <p><a href="http://www.claise.be/2017/11/yang-catalog-latest-development-ietf-100-hackathon/" rel="nofollow">http://www.claise.be/2017/11/yang-catalog-latest-development-ietf-100-hackathon/</a></p>
+                                                                <p><a href="http://www.claise.be/2017/11/yang-catalog-latest-development-ietf-100-hackathon/" rel="nofollow">IETF 100 Hackathon</a></p>
                                                         </div>
 							<div class="entry-content">
-                                                               	<p><a href="http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/" rel="nofollow">http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/</a></p>
+                                                               	<p><a href="http://www.claise.be/2017/07/yang-catalog-latest-development-ietf-99-hackathon/" rel="nofollow">IETF 99 Hackathon</a></p>
                                                          </div>
 							<div class="entry-content">
-								<p><a href="http://www.claise.be/2017/04/yang-catalog-latest-development-ietf-98-hackathon/" rel="nofollow">http://www.claise.be/2017/04/yang-catalog-latest-development-ietf-98-hackathon/</a></p>
+								<p><a href="http://www.claise.be/2017/04/yang-catalog-latest-development-ietf-98-hackathon/" rel="nofollow">IETF 98 Hackathon</a></p>
 							</div>
 							<!-- .entry-content -->
 
