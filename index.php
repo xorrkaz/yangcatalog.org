@@ -80,7 +80,7 @@
 							<li>A <a href="https://www.yangcatalog.org/yang-search/impact_analysis.php">YANG impact analysis</a> tool.</li>
 							<li>View a module's <a href="https://www.yangcatalog.org/yang-search/module_details.php">metadata details</a>.</li>
 							<!--<li>A <a href="http://yangcatalog.org:8088/">YANG Explorer</a> that includes a YANG browser and RPC-builder application to experiment with YANG modules</li>-->
-							<li>An interactive <a href="http://yangcatalog.org:8000">YANG exploration</a> tool that includes a YANG browser, RPC builder, and a YDK script generator to experiment with YANG modules</li>
+							<li>An interactive <a href="https://yangcatalog.org/yangsuite">YANG exploration</a> tool that includes a YANG browser, RPC builder, and a script generator to experiment with YANG modules (login as yangcat / yangcatalog123)</li>
 							<li>A <a href="https://yangcatalog.org/yangre">YANG Regex Validator</a>, a YANG regular expression validator to experiment with W3C YANG "pattern" statements</li>
 						</ul>
 						<h2>APIs</h2>
