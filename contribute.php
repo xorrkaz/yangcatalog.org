@@ -516,6 +516,7 @@ module: yang-catalog
 
                 <p>To get updates about changes with YANG Catalog, <a href="https://www.marcuscom.com/mailman/listinfo/yangcatalog-announce">subscribe
 </a> to <b>announce@yangcatalog.org</b>.</p>
+              <p>Download yangcatalog postman collection <a href="/downloadables/yangcatalog.postman_collection-v1.json" download="yangcatalog-v1.json"> here </a> </p>
               </div>
               <!-- .entry-content -->
 
