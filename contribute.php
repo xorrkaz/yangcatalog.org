@@ -112,7 +112,7 @@
           https://github.com/YangModels/yang</a> repository via a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a>.</li>
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
-                  <li>Use an HTTP PUT request to <a href="https://yangcatalog.org:8443/modules">https://yangcatalog.org:8443/modules</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/module-metadata.yang">
+                  <li>Use an HTTP PUT request to <a href="https://yangcatalog.org/api/modules">https://yangcatalog.org/api/modules</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/module-metadata.yang">
           model-metadata.yang</a> model (current revision: <b>2017-07-27</b>). Note, this module requires the
                     <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog</a> module. The module-metadata.yang has the following tree structure:<br/>
                     <pre>
@@ -137,7 +137,7 @@ module: module-metadata
              +--rw branch?       string
 </pre> For example:<br/>
                     <pre>
-PUT https://yangcatalog.org:8443/modules
+PUT https://yangcatalog.org/api/modules
 Content-type: application/json
 
   {
@@ -168,8 +168,8 @@ Content-type: application/json
     "job-id": "88bd8c4c-8809-4de8-85c8-39d522d4bcdf"
   }
 </pre>
-                    <li>Perform an HTTP GET request to <b>https://yangcatalog.org:8443/job/{job_id}</b> to get the status of the job. The job result will remain "In progress" until the job completes. When the job has completed you will receive either a "Finished"
-                      (on success) or "Failed" (on failure) result. Reason will remain null if the result is other then "Failed, otherwise it will give a information on why it failed. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org:8443/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
+                    <li>Perform an HTTP GET request to <b>https://yangcatalog.org/api/job/{job_id}</b> to get the status of the job. The job result will remain "In progress" until the job completes. When the job has completed you will receive either a "Finished"
+                      (on success) or "Failed" (on failure) result. Reason will remain null if the result is other then "Failed, otherwise it will give a information on why it failed. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org/api/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
                       <pre>
   {
     "info": {
@@ -198,7 +198,7 @@ Content-type: application/json
                 <ol>
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
-                  <li>Use an HTTP PUT request to <a href="https://yangcatalog.org:8443/platforms">https://yangcatalog.org:8443/platforms</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/platform-implementation-metadata.yang">
+                  <li>Use an HTTP PUT request to <a href="https://yangcatalog.org/api/platforms">https://yangcatalog.org/api/platforms</a> with a JSON payload modeled after the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/platform-implementation-metadata.yang">
                platform-implementation-metadata.yang</a> model (current revision: <b>2017-09-27</b>). Note, his module requires the
                     <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">yang-catalog</a> module. The platform-implementation-metadata module has the following tree structure:<br/>
                     <pre>
@@ -222,7 +222,7 @@ Content-type: application/json
               +--rw branch?       string
      </pre> For example:<br/>
                     <pre>
-     PUT https://yangcatalog.org:8443/platforms
+     PUT https://yangcatalog.org/api/platforms
      Content-type: application/json
 
      {
@@ -256,8 +256,8 @@ Content-type: application/json
   "job-id": "88bd8c4c-8809-4de8-85c8-39d522d4bcdf"
 }
 </pre>
-                    <li>Perform an HTTP GET request to <b>https://yangcatalog.org:8443/job/{job_id}</b> to get the status of the job. The job result will remain "In progress" until the job completes. When the job has completed you will receive either a "Finished"
-                      (on success) or "Failed" (on failure) result. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org:8443/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
+                    <li>Perform an HTTP GET request to <b>https://yangcatalog.org/api/job/{job_id}</b> to get the status of the job. The job result will remain "In progress" until the job completes. When the job has completed you will receive either a "Finished"
+                      (on success) or "Failed" (on failure) result. For example, after obtaining the job ID above, perform an HTTP GET to https://yangcatalog.org/api/job/88bd8c4c-8809-4de8-85c8-39d522d4bcdf to get the current status:<br/>
                       <pre>
 {
   "info": {
@@ -280,13 +280,13 @@ Content-type: application/json
                 <p>If you want to search for metadata on a specific module, or you are looking for modules that contain specific metadata, you can do the following:</p>
                 <ol>
                   <li>Use an HTTP GET request to
-                    <b>https://yangcatalog.org:8443/search/modules/{name},{revision},{organization}</b> to receive all the metadata for a specific module and revision.</li>
+                    <b>https://yangcatalog.org/api/search/modules/{name},{revision},{organization}</b> to receive all the metadata for a specific module and revision.</li>
                   <li>Use an HTTP GET request to
-                    <b>https://yangcatalog.org:8443/search/{key}/{value}</b> to receive all the modules that contain a specific metadata.
-                    <br/>For example, to find all modules with a successful compilation status: <a href="https://yangcatalog.org:8443/search/compilation-status/pass">
-                     https://yangcatalog.org:8443/search/compilation-status/passed</a>
-                    <br/>To find all modules from the netconf working group in the IETF: <a href="https://yangcatalog.org:8443/search/ietf/ietf-wg/netconf">
-                     https://yangcatalog.org:8443/search/ietf/ietf-wg/netconf</a>
+                    <b>https://yangcatalog.org/api/search/{key}/{value}</b> to receive all the modules that contain a specific metadata.
+                    <br/>For example, to find all modules with a successful compilation status: <a href="https://yangcatalog.org/api/search/compilation-status/pass">
+                     https://yangcatalog.org/api/search/compilation-status/passed</a>
+                    <br/>To find all modules from the netconf working group in the IETF: <a href="https://yangcatalog.org/api/search/ietf/ietf-wg/netconf">
+                     https://yangcatalog.org/api/search/ietf/ietf-wg/netconf</a>
                     <br/>This method will work for any node within the <a href="https://raw.githubusercontent.com/xorrkaz/netmod-yang-catalog/master/yang-catalog.yang">
                                           yang-catalog</a>:<br/>
                     <pre>
@@ -481,10 +481,10 @@ module: yang-catalog
                   <li><a href="https://yangcatalog.org/create.php">Request</a> a new YANG Catalog API account if you do not have one already.</li>
                   <li>Once the account is requested, wait until confirmation before proceeding.</li>
                   <li>Use an HTTP DELETE request to delete specific module
-                    <b>https://yangcatalog.org:8443/modules/module/{name},{revision},{organization}</b>
+                    <b>https://yangcatalog.org/api/modules/module/{name},{revision},{organization}</b>
                   </li>
                   <li>Use an HTTP DELETE request to delete modules on specific implementation metadata
-                    <b>https://yangcatalog.org:8443/vendors/vendor/{name}</b>.
+                    <b>https://yangcatalog.org/api/vendors/vendor/{name}</b>.
                      You can continue deeper on the vendors branch up to software-flavor
                   </li>
                 </ol>
