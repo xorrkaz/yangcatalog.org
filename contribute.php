@@ -283,7 +283,7 @@ Content-type: application/json
                     <b>https://yangcatalog.org/api/search/modules/{name},{revision},{organization}</b> to receive all the metadata for a specific module and revision.</li>
                   <li>Use an HTTP GET request to
                     <b>https://yangcatalog.org/api/search/{key}/{value}</b> to receive all the modules that contain a specific metadata.
-                    <br/>For example, to find all modules with a successful compilation status: <a href="https://yangcatalog.org/api/search/compilation-status/pass">
+                    <br/>For example, to find all modules with a successful compilation status: <a href="https://yangcatalog.org/api/search/compilation-status/passed">
                      https://yangcatalog.org/api/search/compilation-status/passed</a>
                     <br/>To find all modules from the netconf working group in the IETF: <a href="https://yangcatalog.org/api/search/ietf/ietf-wg/netconf">
                      https://yangcatalog.org/api/search/ietf/ietf-wg/netconf</a>
